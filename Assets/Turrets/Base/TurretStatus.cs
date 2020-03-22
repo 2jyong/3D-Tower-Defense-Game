@@ -13,6 +13,7 @@ public abstract class TurretStatus : MonoBehaviour
 
     [Header("Bullet Attributes")]
     [SerializeField] protected float BulletSpeed;
+    [SerializeField] protected Transform Neck;
     [SerializeField] protected GameObject Bullet;
     [SerializeField] protected Transform BulletPoint;
 
@@ -29,7 +30,7 @@ public abstract class TurretStatus : MonoBehaviour
 
         Vector3 normal = (target.transform.position - transform.position).normalized;
 
-        transform.rotation =
+        Neck.rotation =
             Quaternion.LookRotation(new Vector3(normal.x, 0, normal.z));
 
         if (reloadTime >= FireRate)

@@ -29,10 +29,16 @@ public class Bullet : MonoBehaviour
         if (Vector2.Distance(
             new Vector2(transform.position.x, transform.position.z),
             new Vector2(target.transform.position.x, target.transform.position.z)) <= point)
-            target.OnHit(damage);
+            OnHit();
 
         //if (Vector3.Distance(transform.position, target.transform.position) <= point)
         //    target.OnHit(damage);
     }
+
+    protected virtual void OnHit()
+    {
+        target.OnHit(damage);
+    }
+
 
 }

@@ -23,6 +23,8 @@ public class ControlManager : MonoBehaviour
     //{
     //}
 
+    public RectTransform ClickMenu = null;
+
     private Node prevNode = null;
 
     //  매 프레임(?) 마다 실행되는 함수
@@ -36,6 +38,8 @@ public class ControlManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (ClickMenu.gameObject.activeSelf) return;
+
             //  마우스의 위치를 스크린 상의 포인트 좌표로 변환한다
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -54,17 +58,54 @@ public class ControlManager : MonoBehaviour
                         {
                             n.MaterialColor = Color.white;
                             prevNode = null;
+
+                            ClickMenu.gameObject.SetActive(false);
                             return;
                         }
-                        else 
+                        else
                             prevNode.MaterialColor = Color.white;
                     }
-                    
+
                     n.MaterialColor = NodeManager.Get.SelectColor;
                     prevNode = n;
+
+                    ClickMenu.anchoredPosition = Input.mousePosition;
+                    ClickMenu.gameObject.SetActive(true);
                 }
             }
         }
+        else if (Input.GetMouseButtonDown(1))
+            OnClose();
     }
 
+    public void OnClose()
+    {
+        ClickMenu.gameObject.SetActive(false);
+
+        if (prevNode != null)
+        {
+            prevNode.MaterialColor = Color.white;
+            prevNode = null;
+        }
+    }
+
+    public void OnStandardTower()
+    {
+        if (!IsCheck(5)) return;
+
+        var model = Resources.Load("Prefabs/Standard Turret");
+        GameObject go = Instantiate(model, prevNode.transform) as GameObject;
+        go.transform.localPosition = new Vector3(0, .5f, 0);
+        go.transform.localScale = new Vector3(.5f, .5f, .5f);
+
+        OnClose();
+    }
+
+    private bool IsCheck(int price)
+    {
+        if (prevNode == null) return false;
+
+        return true;
+    }
+    
 }
