@@ -39,20 +39,8 @@ public class GameManager : MonoBehaviour
             rt.localPosition = vec;
             lifes.Add(rt);
         }
-        
-        #region 그룹 이름
-        //for (int i = 0; i < 10; ++i)
-        //{
-        //    RectTransform rt = Instantiate(lifePrefab, lifeTransform).GetComponent<RectTransform>();
 
-        //    //  삼항 연산자 (조건문 ? true : false)
-        //    //  i == 0 ? 1 : 0
-        //    //  i 값이 0 과 동일한가 ? 맞으면 1 반환, 아니면 0 반환
-        //    rt.localPosition = new Vector2(i % 2 == 0 ? 0 : 32, -(i * 32));
-        //}
-
-        //  FizzBuzz 인터넷에 검색해서 문제 풀기
-        #endregion
+        Money = 100;
     }
 
     public RectTransform lifeTransform = null;

@@ -1,17 +1,18 @@
-﻿using UnityEngine;
-
+﻿
 public class Enemy : EnemyTransform
 {
-    public int MaxHP;
     public int Prize;
-    protected int currentHp;
+    public int Hp;
 
     public void OnHit(int damage)
     {
-        currentHp -= damage;
+        Hp -= damage;
 
-        if (currentHp <= 0)
+        if (Hp <= 0)
+        {
             SpawnManager.Get.DestroyEnemy(this);
+            GameManager.Get.Money += Prize;
+        }
     }
 
 }

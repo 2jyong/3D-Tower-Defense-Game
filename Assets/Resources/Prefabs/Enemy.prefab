@@ -106,5 +106,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
-  MaxHP: 1
-  Prize: 1
+  Prize: 2
+  Hp: 1
