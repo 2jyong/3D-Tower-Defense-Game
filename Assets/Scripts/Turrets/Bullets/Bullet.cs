@@ -4,9 +4,9 @@ public class Bullet : MonoBehaviour
 {
     protected Enemy target = null;
     protected float speed = 0f;
-    protected int damage = 0;
+    protected float damage = 0;
 
-    public void SetTarget(Enemy target, int damage, float speed)
+    public void SetTarget(Enemy target, float damage, float speed)
     {
         this.target = target;
         this.damage = damage;
@@ -29,7 +29,10 @@ public class Bullet : MonoBehaviour
         if (Vector2.Distance(
             new Vector2(transform.position.x, transform.position.z),
             new Vector2(target.transform.position.x, target.transform.position.z)) <= point)
+        {
             OnHit();
+            Destroy(gameObject);
+        }
 
         //if (Vector3.Distance(transform.position, target.transform.position) <= point)
         //    target.OnHit(damage);

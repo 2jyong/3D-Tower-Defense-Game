@@ -20,7 +20,6 @@ public class ExplosionBullet : Bullet
         }
 
         Destroy(p, 2f);
-        Destroy(gameObject);
     }
 
 }

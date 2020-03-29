@@ -16,7 +16,7 @@ public class EnemyTransform : MonoBehaviour
     }
 
     //  오브젝트의 이동이나 물리 연산의 경우 여기에 처리한다
-    private void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         if (checkPoint == null) return;
 
@@ -43,7 +43,8 @@ public class EnemyTransform : MonoBehaviour
 
         if (checkPoint == null)
         {
-            //  Minus Life ..
+            GameManager.Get.RemoveLife();
+            Destroy(gameObject);
         }
         else SetDirection();
     }

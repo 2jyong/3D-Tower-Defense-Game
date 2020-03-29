@@ -9,7 +9,7 @@ public abstract class TurretStatus : MonoBehaviour
 
     [Header("Attributes")]
     public TurretType turretType;
-    public int Damage;
+    public float Damage;
     public float Range;
     public float FireRate;
     public int Price;
